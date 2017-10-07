@@ -1,0 +1,22 @@
+{
+    "name": "laravel-frontend-presets/w3css",
+    "description": "Laravel 5.5.x Front-end preset for W3css",
+    "keywords": ["laravel", "preset", "w3css"],
+    "license": "MIT",
+    "require": {
+        "laravel/framework": "5.5.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "LaravelFrontendPresets\\W3cssPreset\\": "src/"
+        }
+    },
+    "extra": {
+      "laravel": {
+        "providers": [
+          "LaravelFrontendPresets\\W3cssPreset\\W3cssPresetServiceProvider"
+       ]
+      }
+    }
+
+}
