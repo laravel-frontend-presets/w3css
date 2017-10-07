@@ -38,7 +38,7 @@ class W3cssPreset extends Preset
     {
         return [
             'w3-css' => '^4.0.4',
-        ] + Arr::except($packages, ['bootstrap-sass', 'foundation-sites', 'uikit']);
+        ] + Arr::except($packages, ['bootstrap-sass', 'foundation-sites', 'uikit', 'bulma']);
     }
 
     /**
