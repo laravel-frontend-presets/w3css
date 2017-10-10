@@ -23,6 +23,10 @@ ul {
   list-style-type: none;
 }
 
+li:hover {
+  color: $link-hover;
+}
+
 a {
   text-decoration: none;
   cursor: pointer;

@@ -17,40 +17,84 @@
     <div id="app">
         <nav class="w3-bar w3-border-bottom w3-border-light-gray">
             <div class="w3-container">
-                <div class="w3-large">
-                    {{-- Toggle Nav --}}
-                    <span class="w3-bar-item w3-button w3-hover-none w3-right" onclick="toggleNav()">&#9776</span>
 
-                    <a class="w3-bar-item w3-button w3-hover-none" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                {{-- App Name --}}
+                <a class="w3-bar-item w3-button w3-hover-none" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+
+                {{-- Toggle Nav - Small Screens --}}
+                <span class="w3-bar-item w3-button w3-hover-none w3-right w3-hide-medium w3-hide-large" onclick="toggleNav()">&#9776</span>
+
+    {{-- MEDIUM and LARGE SCREENS --}}
+
+                {{-- Links --}}
+                @auth ()
+                    <a href="#" class="w3-bar-item w3-button w3-hover-none w3-hide-small">Link 1</a>
+                    <a href="#" class="w3-bar-item w3-button w3-hover-none w3-hide-small">Link 2</a>
+                @endauth
+
+                {{-- Auth Links --}}
+                @guest
+                  <a class="w3-hide-small w3-bar-item w3-button w3-hover-none w3-right" href="{{ route('login' )}}">Login</a>
+                  <a class="w3-hide-small w3-bar-item w3-button w3-hover-none w3-right" href="{{ route('register') }}">Register</a>
+
+                  @else
+                    {{-- Toggle Logout --}}
+                    <a class="w3-hide-small w3-bar-item w3-button w3-hover-none w3-right" href="#" onclick="toggleLogout()">
+                      {{ Auth::user()->name }}
+                      <span>&#9660</span>
                     </a>
-                </div>
+                    <br />
+                      <ul class="w3-hide w3-border w3-border-white" id="logout">
+                          <li class="w3-right-align w3-margin-right">
+                              {{-- Submit Logout --}}
+                              <a class="w3-hide-small" href="{{ route('logout') }}"
+                                  onclick="event.preventDefault();
+                                           document.getElementById('logout-form').submit();">
+                                  Logout
+                              </a>
+                              {{-- Hidden Logout Form --}}
+                              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                  {{ csrf_field() }}
+                              </form>
+                          </li>
+                      </ul>
+                @endguest
             </div>
-                <div class="w3-animate-left w3-hide" id="dropDown">
-                <ul>
-                    <!-- Authentication Links -->
+
+    {{-- SMALL SCREENS --}}
+
+            <div class="w3-animate-left w3-hide" id="dropDown">
+
+                <ul class="w3-hide-medium w3-hide-large">
                     @guest
                         <li><a href="{{ route('login') }}">Login</a></li>
                         <li><a href="{{ route('register') }}">Register</a></li>
                     @else
-                        <li>
+                            {{-- Links --}}
+                            <li><a href="#">Link 1</a></li>
+                            <li><a href="#">Link 2</a></li>
                             {{-- Toggle Logout --}}
-                            <a href="#" onclick="toggleLogout()">
-                                {{ Auth::user()->name }} <span>&#9660</span>
-                            </a>
-                            <ul class="w3-animate-left w3-margin-top w3-hide" id="logout">
+                            <li>
+                              <a href="#" onclick="toggleLogout2()">
+                                  {{ Auth::user()->name }} <span>&#9660</span>
+                              </a>
+                            </li>
+                            <ul class="w3-animate-left w3-hide" id="logout2">
                                 <li>
+                                  {{-- Submit Logout --}}
                                     <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                         Logout
                                     </a>
+                                    {{-- Hidden Logout Form --}}
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
                                     </form>
                                 </li>
                             </ul>
-                        </li>
                     @endguest
                 </ul>
             </div>
@@ -63,12 +107,20 @@
 
     <script>
         function toggleNav() {
-            document.getElementById('dropDown').classList.toggle('w3-hide'); document.getElementById('logout').classList.add('w3-hide');
+            document.getElementById('dropDown').classList.toggle('w3-hide');
+            // Hide if exists
+            if (document.getElementById('logout2')) {
+                document.getElementById('logout2').classList.add('w3-hide');
+            }
         }
         function toggleLogout() {
             event.preventDefault();
             document.getElementById('logout').classList.toggle('w3-hide');
         }
+        function toggleLogout2() {
+            event.preventDefault();
+            document.getElementById('logout2').classList.toggle('w3-hide');
+          }
     </script>
 </body>
 </html>
