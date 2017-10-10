@@ -65,7 +65,7 @@
 
             {{-- SMALL SCREENS --}}
 
-            <div class="w3-animate-left w3-hide" id="dropDown">
+            <div class="w3-animate-left w3-hide" id="slideIn">
 
                 <ul class="w3-hide-medium w3-hide-large">
                     @guest
@@ -107,7 +107,7 @@
 
     <script>
         function toggleNav() {
-            document.getElementById('dropDown').classList.toggle('w3-hide');
+            document.getElementById('slideIn').classList.toggle('w3-hide');
             // Hide if exists
             if (document.getElementById('logout2')) {
                 document.getElementById('logout2').classList.add('w3-hide');
