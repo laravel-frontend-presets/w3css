@@ -26,7 +26,7 @@
                 {{-- Toggle Nav - Small Screens --}}
                 <span class="w3-bar-item w3-button w3-hover-none w3-right w3-hide-medium w3-hide-large" onclick="toggleNav()">&#9776</span>
 
-    {{-- MEDIUM and LARGE SCREENS --}}
+                {{-- MEDIUM and LARGE SCREENS --}}
 
                 {{-- Links --}}
                 @auth ()
@@ -36,8 +36,8 @@
 
                 {{-- Auth Links --}}
                 @guest
-                  <a class="w3-hide-small w3-bar-item w3-button w3-hover-none w3-right" href="{{ route('login' )}}">Login</a>
                   <a class="w3-hide-small w3-bar-item w3-button w3-hover-none w3-right" href="{{ route('register') }}">Register</a>
+                  <a class="w3-hide-small w3-bar-item w3-button w3-hover-none w3-right" href="{{ route('login' )}}">Login</a>
 
                   @else
                     {{-- Toggle Logout --}}
@@ -63,7 +63,7 @@
                 @endguest
             </div>
 
-    {{-- SMALL SCREENS --}}
+            {{-- SMALL SCREENS --}}
 
             <div class="w3-animate-left w3-hide" id="dropDown">
 
