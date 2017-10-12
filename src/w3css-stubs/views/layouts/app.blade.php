@@ -19,34 +19,34 @@
             <div class="w3-container">
 
                 {{-- App Name --}}
-                <a class="w3-bar-item w3-button w3-hover-none" href="{{ url('/') }}">
+                <a class="w3-bar-item" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
 
                 {{-- Toggle Nav - Small Screens --}}
-                <span class="w3-bar-item w3-button w3-hover-none w3-right w3-hide-medium w3-hide-large" onclick="toggleNav()">&#9776</span>
+                <span class="w3-bar-item w3-right w3-hide-medium w3-hide-large" onclick="toggleNav()">&#9776</span>
 
                 {{-- MEDIUM and LARGE SCREENS --}}
 
                 {{-- Links --}}
                 @auth ()
-                    <a href="#" class="w3-bar-item w3-button w3-hover-none w3-hide-small">Link 1</a>
-                    <a href="#" class="w3-bar-item w3-button w3-hover-none w3-hide-small">Link 2</a>
+                    <a href="#" class="w3-bar-item w3-hide-small">Link 1</a>
+                    <a href="#" class="w3-bar-item w3-hide-small">Link 2</a>
                 @endauth
 
                 {{-- Auth Links --}}
                 @guest
-                  <a class="w3-hide-small w3-bar-item w3-button w3-hover-none w3-right" href="{{ route('register') }}">Register</a>
-                  <a class="w3-hide-small w3-bar-item w3-button w3-hover-none w3-right" href="{{ route('login' )}}">Login</a>
+                  <a class="w3-hide-small w3-bar-item w3-right" href="{{ route('register') }}">Register</a>
+                  <a class="w3-hide-small w3-bar-item w3-right" href="{{ route('login' )}}">Login</a>
 
                   @else
                     {{-- Toggle Logout --}}
-                    <a class="w3-hide-small w3-bar-item w3-button w3-hover-none w3-right" href="#" onclick="toggleLogout()">
+                    <a class="w3-hide-small w3-bar-item w3-right" href="#" onclick="toggleLogout()">
                       {{ Auth::user()->name }}
                       <span>&#9660</span>
                     </a>
                     <br />
-                      <ul class="w3-hide w3-border w3-border-white" id="logout">
+                      <ul class="w3-hide w3-border w3-border-white w3-animate-right" id="logout">
                           <li class="w3-right-align w3-margin-right">
                               {{-- Submit Logout --}}
                               <a class="w3-hide-small" href="{{ route('logout') }}"
