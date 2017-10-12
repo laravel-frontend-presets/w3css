@@ -24,7 +24,7 @@
                 </a>
 
                 {{-- Toggle Nav - Small Screens --}}
-                <span class="w3-bar-item w3-right w3-hide-medium w3-hide-large" onclick="toggleNav()">&#9776</span>
+                <span class="w3-bar-item w3-right w3-hide-medium w3-hide-large" style="cursor: pointer" onclick="toggleNav()">&#9776</span>
 
                 {{-- MEDIUM and LARGE SCREENS --}}
 
